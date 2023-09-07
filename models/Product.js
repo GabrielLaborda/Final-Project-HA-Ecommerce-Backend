@@ -43,6 +43,18 @@ const productSchema = new Schema(
   { timestamps: true }
 );
 
+// tweetSchema.virtual('timeInterval').get(function() {
+//   const interval = dateFns.intervalToDuration({
+//       start: this.createdAt,
+//       end: new Date(),
+//   })
+//   if (interval.years) return interval.years+"Y";
+//   if (interval.months) return interval.months+"M";
+//   if (interval.days) return interval.days+"D";
+//   if (interval.hours) return interval.hours+"H";
+//   return interval.minutes+"M";
+// })
+
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
