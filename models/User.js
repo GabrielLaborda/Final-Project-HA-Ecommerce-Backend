@@ -2,16 +2,20 @@ const { mongoose, Schema } = require("../db");
 
 const userSchema = new Schema(
   {
-    firstname: String,
-    lastname: String,
-    email: String,
-    password: String,
-    adress: String,
-    phone: String,
+    firstname: { type: String, required: true },
+    lastname: {
+      type: String,
+      required: true,
+    },
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    adress: { type: String, required: true },
+    phone: { type: String, required: true },
     orders: [
       {
         type: Schema.Types.ObjectId,
         ref: "Order",
+        required: false,
       },
     ],
   },

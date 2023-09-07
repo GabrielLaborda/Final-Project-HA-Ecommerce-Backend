@@ -1,4 +1,5 @@
-const { mongoose, Schema } = require('../db');
+const { mongoose, Schema } = require("../db");
+var slugify = require("slugify");
 
 const productSchema = new Schema(
   {
@@ -11,10 +12,12 @@ const productSchema = new Schema(
       required: true,
     },
 
-    picture: {
-      type: [],
-      required: true,
-    },
+    picture: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
 
     price: {
       type: Number,
@@ -26,35 +29,19 @@ const productSchema = new Schema(
       required: true,
     },
 
-    category: { type: Schema.Types.ObjectId, ref: 'Category' },
+    category: { type: Schema.Types.ObjectId, ref: "Category" },
 
     featured: {
       type: Boolean,
       required: true,
     },
 
-    slug: {
-      type: String,
-      required: true,
-      index: true,
-      unique: true,
-    },
+    slug: slugify(this.name, "-"),
+    required: true,
   },
   { timestamps: true }
 );
 
-// tweetSchema.virtual('timeInterval').get(function() {
-//   const interval = dateFns.intervalToDuration({
-//       start: this.createdAt,
-//       end: new Date(),
-//   })
-//   if (interval.years) return interval.years+"Y";
-//   if (interval.months) return interval.months+"M";
-//   if (interval.days) return interval.days+"D";
-//   if (interval.hours) return interval.hours+"H";
-//   return interval.minutes+"M";
-// })
-
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;
