@@ -1,13 +1,14 @@
 const { mongoose, Schema } = require("../db");
 
 const CategorySchema = new Schema({
-  name: String,
-  picture: String,
-  description: String,
+  name: { type: String, required: true },
+  picture: { type: String, required: true },
+  description: { type: String, required: true },
   products: [
     {
       type: Schema.Types.ObjectId,
       ref: "Product",
+      required: true,
     },
   ],
 });

@@ -5,18 +5,21 @@ const orderSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
     products: [
       {
         type: Schema.Types.ObjectId,
         ref: "Product",
+        required: true,
       },
     ],
     status: {
       type: Schema.Types.ObjectId,
       ref: "OrderStatus",
+      required: true,
     },
-    subtotal: Number,
+    subtotal: { type: Number, required: true },
   },
   { timestamps: true }
 );
