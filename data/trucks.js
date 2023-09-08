@@ -21,7 +21,7 @@ const trucks = [
     ],
     price: 22.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -42,7 +42,7 @@ const trucks = [
     picture: ["SIDEWINDER-PURPLE-ANGLE_2048x.webp"],
     price: 39.95,
     stock: 65,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -65,7 +65,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -86,7 +86,7 @@ const trucks = [
     picture: ["SIDEWINDER-BLACK-ANGLE_2048x.webp"],
     price: 39.95,
     stock: 55,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -109,7 +109,7 @@ const trucks = [
     ],
     price: 36.9,
     stock: 30,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -132,7 +132,7 @@ const trucks = [
     ],
     price: 39.95,
     stock: 80,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -153,7 +153,7 @@ const trucks = [
     picture: ["SIDEWINDER-AQUA-ANGLE_2048x.webp"],
     price: 39.95,
     stock: 86,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -176,7 +176,7 @@ const trucks = [
     ],
     price: 39.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -199,7 +199,7 @@ const trucks = [
     ],
     price: 27.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -222,7 +222,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 80,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -243,7 +243,7 @@ const trucks = [
     picture: ["CHARGER-PURPLE-ANGLE_2048x.webp"],
     price: 27.95,
     stock: 100,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -264,7 +264,7 @@ const trucks = [
     picture: ["CHARGER-LIME-ANGLE_2048x.webp"],
     price: 27.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -287,7 +287,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -310,7 +310,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -333,7 +333,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 40,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -356,7 +356,7 @@ const trucks = [
     ],
     price: 21.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -377,7 +377,7 @@ const trucks = [
     picture: ["SHADOW-BLACK-ANGLE_2048x.webp"],
     price: 16.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -403,7 +403,7 @@ const trucks = [
     ],
     price: 23.95,
     stock: 80,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -424,7 +424,7 @@ const trucks = [
     ],
     price: 17.95,
     stock: 70,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -445,7 +445,7 @@ const trucks = [
     ],
     price: 17.45,
     stock: 50,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -464,7 +464,7 @@ const trucks = [
     picture: ["SHADOW-BLUE-ANGLE_2048x.webp"],
     price: 21.95,
     stock: 50,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -485,7 +485,7 @@ const trucks = [
     ],
     price: 17.95,
     stock: 65,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -506,7 +506,7 @@ const trucks = [
     picture: ["SHADOW-BLACK-RASTA-ANGLE_2048x.webp"],
     price: 17.45,
     stock: 90,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -527,7 +527,7 @@ const trucks = [
     ],
     price: 16.95,
     stock: 100,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -548,7 +548,7 @@ const trucks = [
     ],
     price: 17.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -571,7 +571,7 @@ const trucks = [
     ],
     price: 33.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -594,7 +594,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 80,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -617,7 +617,7 @@ const trucks = [
     ],
     price: 35.95,
     stock: 90,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -638,7 +638,7 @@ const trucks = [
     picture: ["CHARGER-SPECTRUM-ANGLE_2048x.webp"],
     price: 27.95,
     stock: 96,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -659,7 +659,7 @@ const trucks = [
     picture: ["10-Charger-Black-with-Blue_2048x.webp"],
     price: 29.95,
     stock: 55,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -680,7 +680,7 @@ const trucks = [
     picture: ["gullwing-alpine-truck-Raw_2048x.webp"],
     price: 29.95,
     stock: 90,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -706,7 +706,7 @@ const trucks = [
     ],
     price: 76.0,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -735,7 +735,7 @@ const trucks = [
     ],
     price: 76.0,
     stock: 100,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -758,7 +758,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 60,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -782,7 +782,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 80,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -805,7 +805,7 @@ const trucks = [
     ],
     price: 29.95,
     stock: 88,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -831,7 +831,7 @@ const trucks = [
     ],
     price: 23.95,
     stock: 100,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
   {
@@ -854,7 +854,7 @@ const trucks = [
     ],
     price: 25.95,
     stock: 35,
-    caregory: "trucks",
+    category: "trucks",
     featured: false,
   },
 ];
