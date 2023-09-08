@@ -1,11 +1,13 @@
-const { mongoose, Schema } = require("../db");
-var slugify = require("slugify");
+const { mongoose, Schema } = require('../db');
+var slugify = require('slugify');
 
 const productSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
+      index: true,
+      unique: true,
     },
     description: {
       type: String,
@@ -29,7 +31,7 @@ const productSchema = new Schema(
       required: true,
     },
 
-    category: { type: Schema.Types.ObjectId, ref: "Category" },
+    category: { type: Schema.Types.ObjectId, ref: 'Category' },
 
     featured: {
       type: Boolean,
@@ -39,11 +41,13 @@ const productSchema = new Schema(
     slug: {
       type: String,
       required: true,
+      index: true,
+      unique: true,
     },
   },
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;

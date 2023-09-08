@@ -1,22 +1,22 @@
-const { mongoose, Schema } = require("../db");
+const { mongoose, Schema } = require('../db');
 
 const orderSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     products: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Product",
-        required: true,
+        name: String,
+        quantity: Number,
+        price: Number,
       },
     ],
     status: {
       type: Schema.Types.ObjectId,
-      ref: "OrderStatus",
+      ref: 'OrderStatus',
       required: true,
     },
     subtotal: { type: Number, required: true },
@@ -24,6 +24,6 @@ const orderSchema = new Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;
