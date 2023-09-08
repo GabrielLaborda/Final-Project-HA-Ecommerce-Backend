@@ -1,13 +1,13 @@
-const Category = require("../models/Category");
-const Product = require("../models/Product");
-const slugify = require("slugify");
+const Category = require('../models/Category');
+const Product = require('../models/Product');
+const slugify = require('slugify');
 
 async function wheelsSeeders() {
-  const category = await Category.findOne({ name: "Wheels" });
+  const category = await Category.findOne({ name: 'Wheels' });
   const categoryId = category._id;
   const wheels = [
     {
-      name: "74MM 78A NINEBALLS GREY",
+      name: '74MM 78A NINEBALLS GREY',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -26,8 +26,8 @@ async function wheelsSeeders() {
     Larger Size Rolls Over Debris and Imperfections
     Larger Size Helps Hold Speed Longer`,
       picture: [
-        "74MM-78A-NINEBALLS-GREY-temporary_2048x.webp",
-        "74MM-78A-NINEBALLS-GREY-ANGLE-temporary_2048x.webp",
+        '74MM-78A-NINEBALLS-GREY-temporary_2048x.webp',
+        '74MM-78A-NINEBALLS-GREY-ANGLE-temporary_2048x.webp',
       ],
       price: 49.95,
       stock: 83,
@@ -36,7 +36,7 @@ async function wheelsSeeders() {
     },
 
     {
-      name: "69MM 78A NINEBALLS LIGHT BLUE",
+      name: '69MM 78A NINEBALLS LIGHT BLUE',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -55,8 +55,8 @@ async function wheelsSeeders() {
     Large Size Rolls Over Debris and Imperfections
     Large Size Helps Hold Speed Longer`,
       picture: [
-        "69MM-78A-NINEBALLS-LT-BLUE_2048x.webp",
-        "69MM-78A-NINEBALLS-LT-BLUE-ANGLE_2048x.webp",
+        '69MM-78A-NINEBALLS-LT-BLUE_2048x.webp',
+        '69MM-78A-NINEBALLS-LT-BLUE-ANGLE_2048x.webp',
       ],
       price: 48.95,
       stock: 5,
@@ -65,7 +65,7 @@ async function wheelsSeeders() {
     },
 
     {
-      name: "69MM 78A NINEBALLS SMOKE",
+      name: '69MM 78A NINEBALLS SMOKE',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -83,17 +83,14 @@ async function wheelsSeeders() {
     Natural Finish Provides Extra Grip
     Large Size Rolls Over Debris and Imperfections
     Large Size Helps Hold Speed Longer`,
-      picture: [
-        "69MM-78A-NINEBALLS-SMOKE_2048x.webp",
-        "69MM-78A-NINEBALLS-SMOKE-ANGLE_1200x.webp",
-      ],
+      picture: ['69MM-78A-NINEBALLS-SMOKE_2048x.webp', '69MM-78A-NINEBALLS-SMOKE-ANGLE_1200x.webp'],
       price: 48.95,
       stock: 72,
       category: categoryId,
       featured: false,
     },
     {
-      name: "61MM 78A NINEBALLS SMOKE",
+      name: '61MM 78A NINEBALLS SMOKE',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -108,14 +105,14 @@ async function wheelsSeeders() {
     Round Lips for Smooth Slides over Cracks and Road Imperfections
     Stoneground for Immediate Slides
     Centerset Core`,
-      picture: ["61MM-SMOKE_2048x.webp", "61MM-SMOKE-ANGLE_1200x.webp"],
+      picture: ['61MM-SMOKE_2048x.webp', '61MM-SMOKE-ANGLE_1200x.webp'],
       price: 31.95,
       stock: 52,
       category: categoryId,
       featured: false,
     },
     {
-      name: "61MM 80A BUTTERBALLS",
+      name: '61MM 80A BUTTERBALLS',
       description: `The 61mm 80a Butterballs offer the same shred-able formula that's become a fan favorite for so many riders over the years, but in a more compact package. The new 61mm size is now an ideal fit on your double kick, and perfect for just about any freeride situation. While it's the same urethane formula and Durometer as our 65mm and 70mm wheels, you might find a little better control and responsiveness with this smaller version of the Butterball.
 
     *All wheels are sold as a set of 4
@@ -130,17 +127,14 @@ async function wheelsSeeders() {
     Round Lips for Smooth Slides over Cracks and Road Imperfections
     Stoneground for Immediate Slides
     Centerset Core`,
-      picture: [
-        "61MM-BUTTERBALLS-FRONT_2048x.webp",
-        "61MM-BUTTERBALLS-ANGLE_2048x.webp",
-      ],
+      picture: ['61MM-BUTTERBALLS-FRONT_2048x.webp', '61MM-BUTTERBALLS-ANGLE_2048x.webp'],
       price: 35.95,
       stock: 20,
       category: categoryId,
       featured: false,
     },
     {
-      name: "58MM 78A NINEBALLS WARM RED",
+      name: '58MM 78A NINEBALLS WARM RED',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding hipsters, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -157,8 +151,8 @@ async function wheelsSeeders() {
     Offset Core
     Small Enough to be a Shortboard Filmer Wheel`,
       picture: [
-        "58MM-78A-NINEBALLS-WARM-RED_2048x.webp",
-        "58MM-78A-NINEBALLS-WARM-RED-ANGLE_1200x.webp",
+        '58MM-78A-NINEBALLS-WARM-RED_2048x.webp',
+        '58MM-78A-NINEBALLS-WARM-RED-ANGLE_1200x.webp',
       ],
       price: 33.95,
       stock: 60,
@@ -166,7 +160,7 @@ async function wheelsSeeders() {
       featured: false,
     },
     {
-      name: "74MM 78A NINEBALLS RED",
+      name: '74MM 78A NINEBALLS RED',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -184,17 +178,14 @@ async function wheelsSeeders() {
     Natural Finish Provides Extra Grip
     Larger Size Rolls Over Debris and Imperfections
     Larger Size Helps Hold Speed Longer`,
-      picture: [
-        "74MM-78A-NINEBALLS-RED_2048x.webp",
-        "74MM-78A-NINEBALLS-RED-ANGLE_1200x.webp",
-      ],
+      picture: ['74MM-78A-NINEBALLS-RED_2048x.webp', '74MM-78A-NINEBALLS-RED-ANGLE_1200x.webp'],
       price: 49.95,
       stock: 67,
       category: categoryId,
       featured: false,
     },
     {
-      name: "69MM 78A NINEBALLS RED",
+      name: '69MM 78A NINEBALLS RED',
       description: `Our Nineballs have been a long-time favorite of skaters from all walks of life. From cruising kids to freeriding chargers, we’ve got something for everyone in this collection. All these wheels provide good roll speed and come with either a natural finish for speed and grip, or a stone-ground finish for immediate slides.
 
     *All wheels are sold as a set of 4
@@ -212,10 +203,7 @@ async function wheelsSeeders() {
     Natural Finish Provides Extra Grip
     Large Size Rolls Over Debris and Imperfections
     Large Size Helps Hold Speed Longer`,
-      picture: [
-        "69MM-78A-NINEBALLS-RED_2048x.webp",
-        "69MM-78A-NINEBALLS-RED-ANGLE_1200x.webp",
-      ],
+      picture: ['69MM-78A-NINEBALLS-RED_2048x.webp', '69MM-78A-NINEBALLS-RED-ANGLE_1200x.webp'],
       price: 48.95,
       stock: 68,
       category: categoryId,
@@ -238,8 +226,8 @@ async function wheelsSeeders() {
 
     category.products.push(newProduct._id);
     await category.save();
-    console.log("categoría actualizada (Wheels)");
   }
+  console.log('Los seeders de Wheels fueron insertados!');
 }
 
 module.exports = wheelsSeeders;
