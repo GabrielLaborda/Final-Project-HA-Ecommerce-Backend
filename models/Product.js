@@ -36,8 +36,10 @@ const productSchema = new Schema(
       required: true,
     },
 
-    slug: slugify(this.name, "-"),
-    required: true,
+    slug: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
