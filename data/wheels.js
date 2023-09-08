@@ -25,7 +25,7 @@ const wheels = [
     price: 49.95,
     stock: 83,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
 
   {
@@ -52,9 +52,9 @@ const wheels = [
       '69MM-78A-NINEBALLS-LT-BLUE-ANGLE_2048x.webp',
     ],
     price: 48.95,
-    stock: 56,
+    stock: 5,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
 
   {
@@ -80,7 +80,7 @@ const wheels = [
     price: 48.95,
     stock: 72,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
   {
     name: '61MM 78A NINEBALLS SMOKE',
@@ -102,7 +102,7 @@ const wheels = [
     price: 31.95,
     stock: 52,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
   {
     name: '61MM 80A BUTTERBALLS',
@@ -124,7 +124,7 @@ const wheels = [
     price: 35.95,
     stock: 20,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
   {
     name: '58MM 78A NINEBALLS WARM RED',
@@ -150,7 +150,7 @@ const wheels = [
     price: 33.95,
     stock: 60,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
   {
     name: '74MM 78A NINEBALLS RED',
@@ -175,7 +175,7 @@ const wheels = [
     price: 49.95,
     stock: 67,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
   {
     name: '69MM 78A NINEBALLS RED',
@@ -200,6 +200,6 @@ const wheels = [
     price: 48.95,
     stock: 68,
     category: 'Wheels',
-    featured: 'false',
+    featured: false,
   },
 ];

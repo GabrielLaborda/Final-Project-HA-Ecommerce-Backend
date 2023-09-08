@@ -7,13 +7,16 @@ const orderSchema = new Schema(
       ref: 'User',
       required: true,
     },
-    products: [
-      {
-        name: String,
-        quantity: Number,
-        price: Number,
-      },
-    ],
+    products: {
+      type: [
+        {
+          name: String,
+          quantity: Number,
+          price: Number,
+        },
+      ],
+      required: true,
+    },
     status: {
       type: Schema.Types.ObjectId,
       ref: 'OrderStatus',

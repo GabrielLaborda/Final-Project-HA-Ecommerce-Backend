@@ -9,7 +9,7 @@ const userSchema = new Schema(
     },
     email: { type: String, required: true, index: true, unique: true },
     password: { type: String, required: true },
-    adress: { type: String, required: true },
+    address: { type: String, required: true },
     phone: { type: String, required: true },
     orders: [
       {

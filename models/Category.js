@@ -3,7 +3,7 @@ const { mongoose, Schema } = require('../db');
 const CategorySchema = new Schema(
   {
     name: { type: String, required: true, index: true, unique: true },
-    picture: { type: String, required: false },
+    picture: { type: String, required: true },
     description: { type: String, required: true },
     products: [
       {

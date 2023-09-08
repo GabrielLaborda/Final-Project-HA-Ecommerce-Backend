@@ -1,5 +1,4 @@
 const { mongoose, Schema } = require('../db');
-var slugify = require('slugify');
 
 const productSchema = new Schema(
   {
