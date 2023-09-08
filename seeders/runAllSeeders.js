@@ -11,6 +11,7 @@ async function runAllSeeders() {
   await require("./decksSeeders")();
   await require("./trucksSeeders")();
   await require("./wheelsSeeders")();
+  await require("./adminSeeders")();
 
   console.log("[Database] ¡Los datos de prueba fueron insertados!");
   process.exit();
