@@ -2,10 +2,6 @@
 router.get('/', () => {
   return 'index';
 });
-// show creation form
-router.get('/create', () => {
-  return 'create';
-});
 // create one
 router.post('/', () => {
   return 'store';
@@ -13,10 +9,6 @@ router.post('/', () => {
 // show one
 router.get('/:id', () => {
   return 'show';
-});
-// show edit form
-router.get('/:id/edit', () => {
-  return 'edit';
 });
 // edit one
 router.patch('/:id', () => {

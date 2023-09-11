@@ -7,17 +7,17 @@ async function index(req, res) {
     const categories = await Category.find().populate('products');
     return res.status(200).json(categories);
   } catch (err) {
-    console.log("Couldn't find categories");
+    console.log('[ Category Controller -> Index ] Ops, something went wrong');
     return res.status(404).json({ msg: err.message });
   }
 }
 
 async function show(req, res) {
   try {
-    const findOneCategory = await Category.findById(req.params.id).populate('products');
-    return res.status(200).json(findOneCategory);
+    const category = await Category.findById(req.params.id).populate('products');
+    return res.status(200).json(category);
   } catch (err) {
-    console.log("Couldn't find the category");
+    console.log('[ Category Controller -> Show ] Ops, something went wrong');
     return res.status(404).json({ msg: err.message });
   }
 }
@@ -31,29 +31,25 @@ async function store(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     const picturesArray = [];
-
-    if (files.pictures.newFilename) {
-      picturesArray.push(files.pictures.newFilename);
-    } else {
-      picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
-    }
+    files.pictures.newFilename
+      ? picturesArray.push(files.pictures.newFilename)
+      : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
 
     try {
-      const storeCategory = await Category.create({
+      await Category.create({
         name: fields.name,
         pictures: picturesArray,
         description: fields.description,
       });
-      storeCategory.save();
-      return res.status(201).json({ msg: 'Category stored successfully!' });
+      return res.status(201).json({ msg: 'Category successfully created' });
     } catch (err) {
-      console.log("Error, Couldn't store category");
+      console.log('[ Category Controller -> Store ] Ops, something went wrong');
       for (const picture of files.pictures) {
         fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
           if (err) console.log(err);
         });
       }
-      return res.status(404).json({ msg: err.message });
+      return res.status(400).json({ msg: err.message });
     }
   });
 }
@@ -76,27 +72,20 @@ async function update(req, res) {
       }
 
       const picturesArray = [];
-      if (files.pictures.newFilename) {
-        picturesArray.push(files.pictures.newFilename);
-      } else {
-        picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
-      }
+      files.pictures.newFilename
+        ? picturesArray.push(files.pictures.newFilename)
+        : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
 
-      const findOneCategory = await Category.updateOne(
-        { _id: req.params.id },
-        {
-          $set: {
-            name: fields.name,
-            pictures: picturesArray,
-            description: fields.description,
-            products: fields.products,
-          },
-        }
-      ).populate('products');
-      console.log('Category updated');
-      return res.status(200).json({ msg: 'Category updated successfully' });
+      Category.findByIdAndUpdate(req.params.id, {
+        name: fields.name,
+        pictures: picturesArray,
+        description: fields.description,
+        products: fields.products,
+      });
+
+      return res.status(200).json({ msg: 'Category successfully updated' });
     } catch (err) {
-      console.log("Error, Couldn't update category");
+      console.log('[ Category Controller -> Update ] Ops, something went wrong');
       for (const picture of files.pictures) {
         fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
           if (err) console.log(err);
@@ -109,11 +98,10 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   try {
-    const categoryId = req.params.id;
-    await Category.findByIdAndDelete(categoryId);
-    return res.status(200).json({ msg: 'Category deleted successfully!' });
+    await Category.findByIdAndDelete(req.params.id);
+    return res.status(200).json({ msg: 'Category successfully deleted' });
   } catch (err) {
-    console.log("Error, Couldn't delete category");
+    console.log('[ Category Controller -> Destroy ] Ops, something went wrong');
     return res.status(404).json({ msg: err.message });
   }
 }
