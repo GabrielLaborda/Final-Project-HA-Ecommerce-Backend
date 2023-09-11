@@ -1,6 +1,7 @@
 const Admin = require("../models/Admin");
 const formidable = require("formidable");
 const fs = require("fs");
+const bcryptjs = require('bcryptjs');
 
 async function index(req, res) {
   try {
@@ -24,12 +25,13 @@ async function show(req, res) {
 
 async function store(req, res) {
   try {
+    const passwordEncrypt = await bcryptjs.hash(req.body.password, 10);
     const newAdmin = await req.body;
     const storeNewAdmin = await Admin.create({
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password,
+      password: passwordEncrypt,
     });
     storeNewAdmin.save();
     return res.status(201).json({ msg: "New Admin stored successfully!" });
@@ -41,6 +43,7 @@ async function store(req, res) {
 
 async function update(req, res) {
   try {
+    const passwordEncrypt = await bcryptjs.hash(req.body.password, 10);
     const admin = await Admin.findById(req.params.id);
     const findOneAdmin = await Admin.updateOne(
         { _id: req.params.id },
@@ -49,7 +52,7 @@ async function update(req, res) {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: req.body.password,
+            password: passwordEncrypt,
           },
         }
     );
