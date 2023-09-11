@@ -3,11 +3,6 @@ const formidable = require('formidable');
 const slugify = require('slugify');
 const fs = require('fs');
 
-// revisar con el team:
-// - console.logs de error
-// - función category store
-// - status de error y success función category.store
-
 async function index(req, res) {
   try {
     const products = await Product.find();
@@ -40,6 +35,7 @@ async function store(req, res) {
     files.picture.newFilename
       ? picturesArray.push(files.picture.newFilename)
       : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
+
     try {
       await Product.create({
         name: fields.name,
@@ -54,10 +50,16 @@ async function store(req, res) {
       res.status(201).json({ msg: 'product successfully created' });
     } catch (error) {
       console.log('[ Product Controller -> Store ] Ops, something went wrong');
+      for (const picture of files.picture) {
+        fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
+          if (err) console.log(err);
+        });
+      }
       return res.status(400).json({ msg: error.message });
     }
   });
 }
+
 async function update(req, res) {
   const form = formidable({
     multiples: true,
@@ -66,11 +68,21 @@ async function update(req, res) {
   });
 
   form.parse(req, async (err, fields, files) => {
-    const picturesArray = [];
-    files.picture.newFilename
-      ? picturesArray.push(files.picture.newFilename)
-      : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
     try {
+      const product = await Product.findById(req.params.id);
+
+      for (const picture of product.picture) {
+        fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
+          if (err) console.log(err);
+        });
+      }
+
+      const picturesArray = [];
+
+      files.picture.newFilename
+        ? picturesArray.push(files.picture.newFilename)
+        : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
+
       await Product.findByIdAndUpdate(req.params.id, {
         name: fields.name,
         description: fields.description,
@@ -84,6 +96,11 @@ async function update(req, res) {
       res.status(200).json({ msg: 'product successfully updated' });
     } catch (error) {
       console.log('[ Product Controller -> Update ] Ops, something went wrong');
+      for (const picture of files.picture) {
+        fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
+          if (err) console.log(err);
+        });
+      }
       return res.status(304).json({ msg: error.message });
     }
   });
