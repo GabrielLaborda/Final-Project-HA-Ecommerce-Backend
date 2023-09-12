@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const Category = require('./../models/Category');
 const formidable = require('formidable');
 const slugify = require('slugify');
 const fs = require('fs');
@@ -37,7 +38,7 @@ async function store(req, res) {
       : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
 
     try {
-      await Product.create({
+      const product = new Product({
         name: fields.name,
         description: fields.description,
         picture: picturesArray,
@@ -47,6 +48,10 @@ async function store(req, res) {
         featured: fields.featured,
         slug: slugify(fields.name, { lower: true, strict: true }),
       });
+      await product.save();
+      const category = await Category.findById(fields.category);
+      category.products.push(product._id);
+      await category.save();
       res.status(201).json({ msg: 'product successfully created' });
     } catch (error) {
       console.log('[ Product Controller -> Store ] Ops, something went wrong');
