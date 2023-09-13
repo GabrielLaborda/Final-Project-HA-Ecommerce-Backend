@@ -932,7 +932,7 @@ async function completesSeeders() {
     Photography by Hayden Richards
     `,
       picture: [
-        'UNAGIRIPS01_2048x.webpp',
+        'UNAGIRIPS01_2048x.webp',
         'UNAGIRIPS02_2048x.webp',
         'UNAGIRIPS03_2048x.webp',
         'UNAGIRIPS04_2048x.jpg',
