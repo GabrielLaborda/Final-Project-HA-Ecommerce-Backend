@@ -21,7 +21,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({ slug: req.params.slug });
     return res.status(200).json(product);
   } catch (error) {
     console.log('[ Product Controller -> Show ] Ops, something went wrong');
@@ -79,7 +79,7 @@ async function update(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     try {
-      const product = await Product.findById(req.params.id);
+      const product = await Product.findOne({ slug: req.params.slug });
 
       for (const picture of product.picture) {
         fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
@@ -93,16 +93,19 @@ async function update(req, res) {
         ? picturesArray.push(files.picture.newFilename)
         : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
 
-      await Product.findByIdAndUpdate(req.params.id, {
-        name: fields.name,
-        description: fields.description,
-        picture: picturesArray,
-        price: fields.price,
-        stock: fields.stock,
-        category: fields.category,
-        featured: fields.featured,
-        slug: slugify(fields.name, { lower: true, strict: true }),
-      });
+      await Product.findOneAndUpdate(
+        { slug: req.params.slug },
+        {
+          name: fields.name,
+          description: fields.description,
+          picture: picturesArray,
+          price: fields.price,
+          stock: fields.stock,
+          category: fields.category,
+          featured: fields.featured,
+          slug: slugify(fields.name, { lower: true, strict: true }),
+        }
+      );
       res.status(200).json({ msg: 'product successfully updated' });
     } catch (error) {
       console.log('[ Product Controller -> Update ] Ops, something went wrong');
@@ -118,7 +121,7 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   try {
-    await Product.findByIdAndDelete(req.params.id);
+    await Product.findOneAndDelete({ slug: req.params.slug });
     return res.status(200).json({ msg: 'Product successfully deleted' });
   } catch (err) {
     console.log('[ Product Controller -> Destroy ] Ops, something went wrong');

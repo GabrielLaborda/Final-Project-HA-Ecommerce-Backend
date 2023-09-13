@@ -7,10 +7,10 @@ router.get('/', productControllers.index);
 // create one
 router.post('/', productControllers.store);
 // get one
-router.get('/:id', productControllers.show);
+router.get('/:slug', productControllers.show);
 // edit one
-router.patch('/:id', productControllers.update);
+router.patch('/:slug', productControllers.update);
 // delete one
-router.delete('/:id', productControllers.destroy);
+router.delete('/:slug', productControllers.destroy);
 
 module.exports = router;
