@@ -16,7 +16,7 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const category = await Category.findById(req.params.id).populate('products');
+    const category = await Category.findOne({ slug: req.params.slug }).populate('products');
     return res.status(200).json(category);
   } catch (err) {
     console.log('[ Category Controller -> Show ] Ops, something went wrong');
@@ -66,7 +66,7 @@ async function update(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     try {
-      const category = await Category.findById(req.params.id);
+      const category = await Category.findOne({ slug: req.params.slug });
 
       for (const picture of category.pictures) {
         fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
@@ -79,13 +79,16 @@ async function update(req, res) {
         ? picturesArray.push(files.pictures.newFilename)
         : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
 
-      Category.findByIdAndUpdate(req.params.id, {
-        name: fields.name,
-        pictures: picturesArray,
-        description: fields.description,
-        products: fields.products,
-        slug: slugify(fields.name, { lower: true, strict: true }),
-      });
+      Category.findOneAndUpdate(
+        { slug: req.params.slug },
+        {
+          name: fields.name,
+          pictures: picturesArray,
+          description: fields.description,
+          products: fields.products,
+          slug: slugify(fields.name, { lower: true, strict: true }),
+        }
+      );
 
       return res.status(200).json({ msg: 'Category successfully updated' });
     } catch (err) {
@@ -102,7 +105,7 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   try {
-    await Category.findByIdAndDelete(req.params.id);
+    await Category.findOneAndDelete({ slug: req.params.slug });
     return res.status(200).json({ msg: 'Category successfully deleted' });
   } catch (err) {
     console.log('[ Category Controller -> Destroy ] Ops, something went wrong');
