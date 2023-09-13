@@ -63,7 +63,7 @@ const decks = [
       Printed Grip Tape
       Kicktail
       Art by Josh Smith`,
-    picture: ["hopper_hoopla_deck_1", "hopper_hoopla_deck_2"],
+    picture: ["hopper_hoopla_deck_1.webp", "hopper_hoopla_deck_2.webp"],
     price: 68.95,
     stock: 70,
     category: "decks",
@@ -88,9 +88,9 @@ const decks = [
       Die-Cut Grip with Exposed Colored Top Ply
       Kicktail`,
     picture: [
-      "jammer_divide_deck_1",
-      "jammer_divide_deck_2",
-      "jammer_divide_deck_3",
+      "jammer_divide_deck_1.webp",
+      "jammer_divide_deck_2.webp",
+      "jammer_divide_deck_3.webp",
     ],
     price: 69.95,
     stock: 71,
@@ -130,7 +130,7 @@ const decks = [
       Printed Regular Grip Over Nose
       Kicktail
       Photography by Hayden Richards`,
-    picture: ["jammer_rips_deck_1", "jammer_rips_deck_2"],
+    picture: ["jammer_rips_deck_1.webp", "jammer_rips_deck_2.webp"],
     price: 69.95,
     stock: 72,
     category: "decks",
