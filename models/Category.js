@@ -1,4 +1,4 @@
-const { mongoose, Schema } = require("../db");
+const { mongoose, Schema } = require('../db');
 
 const categorySchema = new Schema(
   {
@@ -8,14 +8,20 @@ const categorySchema = new Schema(
     products: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Product",
+        ref: 'Product',
         required: false,
       },
     ],
+    slug: {
+      type: String,
+      required: true,
+      index: true,
+      unique: true,
+    },
   },
   { timestamps: true }
 );
 
-const Category = mongoose.model("Category", categorySchema);
+const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;

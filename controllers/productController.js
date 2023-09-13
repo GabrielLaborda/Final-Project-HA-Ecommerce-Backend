@@ -7,7 +7,7 @@ const fs = require('fs');
 async function index(req, res) {
   try {
     if (req.query.featured) {
-      const products = await Product.find({ featured: true });
+      const products = await Product.find({ featured: true }).populate('category');
       return res.status(200).json(products);
     } else {
       const products = await Product.find();
