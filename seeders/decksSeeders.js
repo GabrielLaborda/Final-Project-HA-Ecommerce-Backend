@@ -32,7 +32,7 @@ async function decksSeeders() {
       price: 58.95,
       stock: 75,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'HOPPER HOOPLA DECK',
@@ -74,7 +74,7 @@ async function decksSeeders() {
       price: 68.95,
       stock: 70,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'JAMMER DIVIDE DECK',
@@ -137,7 +137,7 @@ async function decksSeeders() {
       price: 69.95,
       stock: 72,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'FAT WAVE FOSSIL DECK',
@@ -199,7 +199,7 @@ async function decksSeeders() {
       price: 69.95,
       stock: 74,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'WAVEPARK SHADOW DECK',
@@ -227,7 +227,7 @@ async function decksSeeders() {
       price: 65.95,
       stock: 76,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'WAVEPARK PARTY DECK',

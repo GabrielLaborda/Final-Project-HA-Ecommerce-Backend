@@ -27,7 +27,7 @@ async function trucksSeeders() {
       price: 22.95,
       stock: 60,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '9.0" GULLWING SIDEWINDER II PURPLE SINGLE TRUCK',
@@ -69,7 +69,7 @@ async function trucksSeeders() {
       price: 25.95,
       stock: 70,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '9.0" GULLWING SIDEWINDER II BLACK SINGLE TRUCK',
@@ -132,7 +132,7 @@ async function trucksSeeders() {
       price: 39.95,
       stock: 80,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '9.0" GULLWING SIDEWINDER II AQUA SINGLE TRUCK',
@@ -153,7 +153,7 @@ async function trucksSeeders() {
       price: 39.95,
       stock: 86,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '9.0" GULLWING SIDEWINDER II BLUE SINGLE TRUCK',
@@ -174,7 +174,7 @@ async function trucksSeeders() {
       price: 39.95,
       stock: 70,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '9.0" GULLWING CHARGER VAPOR SINGLE TRUCK',

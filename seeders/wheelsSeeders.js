@@ -61,7 +61,7 @@ async function wheelsSeeders() {
       price: 48.95,
       stock: 5,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
 
     {
@@ -87,7 +87,7 @@ async function wheelsSeeders() {
       price: 48.95,
       stock: 72,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '61MM 78A NINEBALLS SMOKE',
@@ -131,7 +131,7 @@ async function wheelsSeeders() {
       price: 35.95,
       stock: 20,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '58MM 78A NINEBALLS WARM RED',
@@ -157,7 +157,7 @@ async function wheelsSeeders() {
       price: 33.95,
       stock: 60,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '74MM 78A NINEBALLS RED',
@@ -182,7 +182,7 @@ async function wheelsSeeders() {
       price: 49.95,
       stock: 67,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: '69MM 78A NINEBALLS RED',

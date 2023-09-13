@@ -6,8 +6,13 @@ const fs = require('fs');
 
 async function index(req, res) {
   try {
-    const products = await Product.find();
-    return res.status(200).json(products);
+    if (req.query.featured) {
+      const products = await Product.find({ featured: true });
+      return res.status(200).json(products);
+    } else {
+      const products = await Product.find();
+      return res.status(200).json(products);
+    }
   } catch (error) {
     console.log('[ Product Controller -> Index ] Ops, something went wrong');
     return res.status(404).json({ msg: error.message });

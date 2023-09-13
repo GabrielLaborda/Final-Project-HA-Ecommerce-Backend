@@ -49,7 +49,7 @@ async function completesSeeders() {
       price: 198.95,
       stock: 89,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'LEDGER FIESTA',
@@ -139,7 +139,7 @@ async function completesSeeders() {
       price: 184.95,
       stock: 54,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'WAVEPARK CYCLES',
@@ -225,7 +225,7 @@ async function completesSeeders() {
       price: 158.95,
       stock: 74,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'JIMMY RIHA PRO DIVER',
@@ -690,7 +690,7 @@ async function completesSeeders() {
       price: 161.95,
       stock: 98,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'BAMBOOZLER BORA BORA',
