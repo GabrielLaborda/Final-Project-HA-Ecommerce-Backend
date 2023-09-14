@@ -6,7 +6,13 @@ const fs = require('fs');
 
 async function index(req, res) {
   try {
-    if (req.query.featured) {
+    if (req.query.category) {
+      const products = await Product.find({
+        featured: true,
+        category: req.query.category,
+      }).populate('category');
+      return res.status(200).json(products);
+    } else if (req.query.featured) {
       const products = await Product.find({ featured: true }).populate('category');
       return res.status(200).json(products);
     } else {
