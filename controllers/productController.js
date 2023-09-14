@@ -10,7 +10,7 @@ async function index(req, res) {
       const products = await Product.find({ featured: true }).populate('category');
       return res.status(200).json(products);
     } else {
-      const products = await Product.find();
+      const products = await Product.find().populate('category');
       return res.status(200).json(products);
     }
   } catch (error) {
