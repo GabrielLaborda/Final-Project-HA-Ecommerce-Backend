@@ -79,7 +79,7 @@ async function update(req, res) {
         ? picturesArray.push(files.pictures.newFilename)
         : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
 
-      Category.findOneAndUpdate(
+      await Category.findOneAndUpdate(
         { slug: req.params.slug },
         {
           name: fields.name,
