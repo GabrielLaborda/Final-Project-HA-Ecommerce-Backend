@@ -57,12 +57,8 @@ async function update(req, res) {
     }
   } else {
     try {
-      /* const passwordEncrypt = await bcrypt.hash(req.body.password, 10); */
       await User.findByIdAndUpdate(req.params.id, {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
         email: req.body.email,
-        /*  password: passwordEncrypt, */
         address: req.body.address,
         phone: req.body.phone,
       });
