@@ -77,52 +77,74 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
-  const form = formidable({
-    multiples: true,
-    uploadDir: __dirname + '/../public/img',
-    keepExtensions: true,
-  });
-
-  form.parse(req, async (err, fields, files) => {
+  if (req.query.transaction === 'buy') {
     try {
       const product = await Product.findOne({ slug: req.params.slug });
 
-      for (const picture of product.picture) {
-        fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
-          if (err) console.log(err);
+      if (product.stock >= req.body.quantity) {
+        console.log(product.stock);
+        console.log(req.body.quantity);
+        product.stock -= req.body.quantity;
+        console.log(product.stock);
+        await product.save();
+        res.status(200).json({ msg: 'product stock successfully updated' });
+      } else {
+        res.status(400).json({
+          msg: `Ops, someone beated you to it!. There are currently ${product.stock} units available of ${product.name}.`,
         });
       }
-
-      const picturesArray = [];
-
-      files.picture.newFilename
-        ? picturesArray.push(files.picture.newFilename)
-        : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
-
-      await Product.findOneAndUpdate(
-        { slug: req.params.slug },
-        {
-          name: fields.name,
-          description: fields.description,
-          picture: picturesArray,
-          price: fields.price,
-          stock: fields.stock,
-          category: fields.category,
-          featured: fields.featured,
-          slug: slugify(fields.name, { lower: true, strict: true }),
-        }
-      );
-      res.status(200).json({ msg: 'product successfully updated' });
     } catch (error) {
-      console.log('[ Product Controller -> Update ] Ops, something went wrong');
-      for (const picture of files.picture) {
-        fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-          if (err) console.log(err);
-        });
-      }
-      return res.status(304).json({ msg: error.message });
+      return res.status(400).json({ msg: error.message });
     }
-  });
+  } else {
+    const form = formidable({
+      multiples: true,
+      uploadDir: __dirname + '/../public/img',
+      keepExtensions: true,
+    });
+
+    form.parse(req, async (err, fields, files) => {
+      try {
+        const product = await Product.findOne({ slug: req.params.slug });
+
+        for (const picture of product.picture) {
+          fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
+            if (err) console.log(err);
+          });
+        }
+
+        const picturesArray = [];
+
+        files.picture.newFilename
+          ? picturesArray.push(files.picture.newFilename)
+          : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
+
+        await Product.findOneAndUpdate(
+          { slug: req.params.slug },
+          {
+            name: fields.name,
+            description: fields.description,
+            picture: picturesArray,
+            price: fields.price,
+            stock: fields.stock,
+            category: fields.category,
+            featured: fields.featured,
+            slug: slugify(fields.name, { lower: true, strict: true }),
+          }
+        );
+        res.status(200).json({ msg: 'product successfully updated' });
+      } catch (error) {
+        console.log('[ Product Controller -> Update ] Ops, something went wrong');
+
+        for (const picture of files.picture) {
+          fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
+            if (err) console.log(err);
+          });
+        }
+        return res.status(304).json({ msg: error.message });
+      }
+    });
+  }
 }
 
 async function destroy(req, res) {
