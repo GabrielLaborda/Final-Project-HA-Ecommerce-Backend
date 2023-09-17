@@ -45,20 +45,32 @@ async function store(req, res) {
   }
 }
 async function update(req, res) {
-  try {
-    const passwordEncrypt = await bcrypt.hash(req.body.password, 10);
-    await User.findByIdAndUpdate(req.params.id, {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: passwordEncrypt,
-      address: req.body.address,
-      phone: req.body.phone,
-    });
-    res.status(200).json({ msg: "user successfully updated" });
-  } catch (err) {
-    console.log("[ User Controller -> Update ] Ops, something went wrong");
-    return res.status(404).json({ msg: err.message });
+  if (req.query.transaction === "newOrder") {
+    try {
+      const user = await User.findById(req.params.id);
+      user.orders.push(req.body.orderId);
+      await user.save();
+      return res.status(200).json({ msg: "user orders successfully updated" });
+    } catch (error) {
+      console.log("[ User Controller -> Update ] Ops, something went wrong");
+      return res.status(404).json({ msg: err.message });
+    }
+  } else {
+    try {
+      /* const passwordEncrypt = await bcrypt.hash(req.body.password, 10); */
+      await User.findByIdAndUpdate(req.params.id, {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        /*  password: passwordEncrypt, */
+        address: req.body.address,
+        phone: req.body.phone,
+      });
+      res.status(200).json({ msg: "user successfully updated" });
+    } catch (err) {
+      console.log("[ User Controller -> Update ] Ops, something went wrong");
+      return res.status(404).json({ msg: err.message });
+    }
   }
 }
 
