@@ -1,8 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const Order = require("../models/Order");
-// hacer el satore de los usrers
-// El login va a estar en un loginController o outController
 
 async function index(req, res) {
   try {
@@ -16,7 +14,12 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-    const user = await User.findById(req.params.id).populate("orders");
+    const user = await User.findById(req.params.id).populate({
+      path: "orders",
+      populate: {
+        path: "status",
+      },
+    });
     return res.status(200).json(user);
   } catch (err) {
     console.log("[ User Controller -> Show ] Ops, something went wrong");
