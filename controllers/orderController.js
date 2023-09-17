@@ -24,13 +24,13 @@ async function show(req, res) {
 
 async function store(req, res) {
   try {
-    await Order.create({
+    const order = await Order.create({
       user: req.auth.sub,
       products: req.body.products,
       status: req.body.status,
       subtotal: req.body.subtotal,
     });
-    return res.status(201).json({ msg: 'Order successfully created' });
+    return res.status(201).json({ msg: 'Order successfully created', orderId: order.id });
   } catch (err) {
     console.log('[ Order Controller -> Store ] Ops, something went wrong');
     return res.status(400).json({ msg: err.message });

@@ -82,10 +82,8 @@ async function update(req, res) {
       const product = await Product.findOne({ slug: req.params.slug });
 
       if (product.stock >= req.body.quantity) {
-        console.log(product.stock);
-        console.log(req.body.quantity);
         product.stock -= req.body.quantity;
-        console.log(product.stock);
+
         await product.save();
         res.status(200).json({ msg: 'product stock successfully updated' });
       } else {
