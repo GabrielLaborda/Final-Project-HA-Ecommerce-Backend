@@ -22,9 +22,6 @@ async function loginUser(req, res) {
       id: user.id,
       firstname: user.firstname,
       lastname: user.lastname,
-      email: user.email,
-      address: user.address,
-      phone: user.phone,
     });
   } catch (err) {
     console.log("[ Login Controller -> loginUser ] Ops, something went wrong");
