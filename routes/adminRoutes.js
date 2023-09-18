@@ -2,19 +2,10 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 
-router.get("/", adminController.index); /* Ok, funcionando*/
-router.get("/:id", adminController.show); /* Ok, funcionando*/
-router.post(
-  "/",
-  adminController.store
-); /* Funcionando, falta implementar FORMIDABLE */
-router.patch(
-  "/:id",
-  adminController.update
-); /* Funcionando, falta implementar FORMIDABLE */
-router.delete(
-  "/:id",
-  adminController.destroy
-); /*Ok, funcionando con req.params.id */
+router.get("/", adminController.index);
+router.get("/:id", adminController.show);
+router.post("/", adminController.store);
+router.patch("/:id", adminController.update);
+router.delete("/:id", adminController.destroy);
 
 module.exports = router;

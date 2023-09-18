@@ -44,6 +44,7 @@ async function store(req, res) {
     return res.status(404).json({ msg: err.message });
   }
 }
+
 async function update(req, res) {
   if (req.query.transaction === "newOrder") {
     try {
