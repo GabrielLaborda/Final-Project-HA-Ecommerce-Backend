@@ -1,16 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const productControllers = require('../controllers/productController');
+const productControllers = require("../controllers/productController");
 
-// get all
-router.get('/', productControllers.index);
-// create one
-router.post('/', productControllers.store);
-// get one
-router.get('/:slug', productControllers.show);
-// edit one
-router.patch('/:slug', productControllers.update);
-// delete one
-router.delete('/:slug', productControllers.destroy);
+router.get("/", productControllers.index);
+router.post(
+  "/",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  productControllers.store
+);
+router.get("/:slug", productControllers.show);
+router.patch(
+  "/:slug",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  productControllers.update
+);
+router.delete(
+  "/:slug",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  productControllers.destroy
+);
 
 module.exports = router;

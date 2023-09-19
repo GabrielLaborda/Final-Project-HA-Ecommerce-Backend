@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const categoryController = require('../controllers/categoryController');
+const categoryController = require("../controllers/categoryController");
 
-router.get('/', categoryController.index); /* Ok, funcionando*/
-router.get('/:slug', categoryController.show); /* Ok, funcionando*/
-router.post('/', categoryController.store); /* Funcionando, falta implementar FORMIDABLE */
-router.patch('/:slug', categoryController.update); /* Funcionando, falta implementar FORMIDABLE */
-router.delete('/:slug', categoryController.destroy); /*Ok, funcionando con req.params.id */
+router.get("/", categoryController.index);
+router.get("/:slug", categoryController.show);
+router.post("/", categoryController.store);
+router.patch("/:slug", categoryController.update);
+router.delete("/:slug", categoryController.destroy);
 
 module.exports = router;

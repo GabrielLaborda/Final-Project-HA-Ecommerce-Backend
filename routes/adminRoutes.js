@@ -2,10 +2,30 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
 
-router.get("/", adminController.index);
-router.get("/:id", adminController.show);
-router.post("/", adminController.store);
-router.patch("/:id", adminController.update);
-router.delete("/:id", adminController.destroy);
+router.get(
+  "/",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  adminController.index
+);
+router.get(
+  "/:id",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  adminController.show
+);
+router.post(
+  "/",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  adminController.store
+);
+router.patch(
+  "/:id",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  adminController.update
+);
+router.delete(
+  "/:id",
+  checkJwt({ secret: process.env.JWT_SIGN_SECRET, algorithms: ["HS256"] }),
+  adminController.destroy
+);
 
 module.exports = router;
