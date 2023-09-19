@@ -57,8 +57,6 @@ async function store(req, res) {
             contentType: files.picture.mimetype,
             duplex: 'half',
           });
-        console.log(data);
-        console.log(error);
       } else {
         picturesArray.push(...files.picture.map((picture) => picture.newFilename));
         for (const picture of files.picture) {
@@ -89,11 +87,6 @@ async function store(req, res) {
       res.status(201).json({ msg: 'product successfully created' });
     } catch (error) {
       console.log('[ Product Controller -> Store ] Ops, something went wrong');
-      // for (const picture of files.picture) {
-      //   fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-      //     if (err) console.log(err);
-      //   });
-      // }
       return res.status(400).json({ msg: error.message });
     }
   });
@@ -118,53 +111,23 @@ async function update(req, res) {
       return res.status(400).json({ msg: error.message });
     }
   } else {
-    const form = formidable({
-      multiples: true,
-      uploadDir: __dirname + '/../public/img',
-      keepExtensions: true,
-    });
-
-    form.parse(req, async (err, fields, files) => {
-      try {
-        const product = await Product.findOne({ slug: req.params.slug });
-
-        for (const picture of product.picture) {
-          fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
-            if (err) console.log(err);
-          });
+    try {
+      await Product.findOneAndUpdate(
+        { slug: req.params.slug },
+        {
+          name: fields.name,
+          description: fields.description,
+          price: fields.price,
+          stock: fields.stock,
+          featured: fields.featured,
+          slug: slugify(fields.name, { lower: true, strict: true }),
         }
-
-        const picturesArray = [];
-
-        files.picture.newFilename
-          ? picturesArray.push(files.picture.newFilename)
-          : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
-
-        await Product.findOneAndUpdate(
-          { slug: req.params.slug },
-          {
-            name: fields.name,
-            description: fields.description,
-            picture: picturesArray,
-            price: fields.price,
-            stock: fields.stock,
-            category: fields.category,
-            featured: fields.featured,
-            slug: slugify(fields.name, { lower: true, strict: true }),
-          }
-        );
-        res.status(200).json({ msg: 'product successfully updated' });
-      } catch (error) {
-        console.log('[ Product Controller -> Update ] Ops, something went wrong');
-
-        for (const picture of files.picture) {
-          fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-            if (err) console.log(err);
-          });
-        }
-        return res.status(304).json({ msg: error.message });
-      }
-    });
+      );
+      res.status(200).json({ msg: 'product successfully updated' });
+    } catch (error) {
+      console.log('[ Product Controller -> Update ] Ops, something went wrong');
+      return res.status(304).json({ msg: error.message });
+    }
   }
 }
 

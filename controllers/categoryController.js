@@ -27,17 +27,36 @@ async function show(req, res) {
 async function store(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + '/../public/img',
     keepExtensions: true,
   });
 
   form.parse(req, async (err, fields, files) => {
-    const picturesArray = [];
-    files.pictures.newFilename
-      ? picturesArray.push(files.pictures.newFilename)
-      : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
-
     try {
+      const picturesArray = [];
+
+      if (files.pictures.newFilename) {
+        picturesArray.push(files.pictures.newFilename);
+        const { data, error } = await supabase.storage
+          .from('UrbanRush')
+          .upload(files.pictures.newFilename, fs.createReadStream(files.pictures.filepath), {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: files.pictures.mimetype,
+            duplex: 'half',
+          });
+      } else {
+        picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
+        for (const picture of files.pictures) {
+          const { data, error } = await supabase.storage
+            .from('UrbanRush')
+            .upload(picture.newFilename, fs.createReadStream(picture.filepath), {
+              cacheControl: '3600',
+              upsert: false,
+              contentType: picture.mimetype,
+              duplex: 'half',
+            });
+        }
+      }
       await Category.create({
         name: fields.name,
         pictures: picturesArray,
@@ -58,49 +77,21 @@ async function store(req, res) {
 }
 
 async function update(req, res) {
-  const form = formidable({
-    multiples: true,
-    uploadDir: __dirname + '/../public/img',
-    keepExtensions: true,
-  });
-
-  form.parse(req, async (err, fields, files) => {
-    try {
-      const category = await Category.findOne({ slug: req.params.slug });
-
-      for (const picture of category.pictures) {
-        fs.unlink(__dirname + '/../public/img/' + picture, (err) => {
-          if (err) console.log(err);
-        });
+  try {
+    await Category.findOneAndUpdate(
+      { slug: req.params.slug },
+      {
+        name: fields.name,
+        description: fields.description,
+        products: fields.products,
+        slug: slugify(fields.name, { lower: true, strict: true }),
       }
-
-      const picturesArray = [];
-      files.pictures.newFilename
-        ? picturesArray.push(files.pictures.newFilename)
-        : picturesArray.push(...files.pictures.map((picture) => picture.newFilename));
-
-      await Category.findOneAndUpdate(
-        { slug: req.params.slug },
-        {
-          name: fields.name,
-          pictures: picturesArray,
-          description: fields.description,
-          products: fields.products,
-          slug: slugify(fields.name, { lower: true, strict: true }),
-        }
-      );
-
-      return res.status(200).json({ msg: 'Category successfully updated' });
-    } catch (err) {
-      console.log('[ Category Controller -> Update ] Ops, something went wrong');
-      for (const picture of files.pictures) {
-        fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-          if (err) console.log(err);
-        });
-      }
-      return res.status(304).json({ msg: err.message });
-    }
-  });
+    );
+    return res.status(200).json({ msg: 'Category successfully updated' });
+  } catch (err) {
+    console.log('[ Category Controller -> Update ] Ops, something went wrong');
+    return res.status(304).json({ msg: err.message });
+  }
 }
 
 async function destroy(req, res) {
