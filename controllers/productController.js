@@ -44,8 +44,6 @@ async function store(req, res) {
   });
 
   form.parse(req, async (err, fields, files) => {
-    // const ext = path.extname(files.avatar.filepath);
-    // const newFileName = `image_${Date.now()}${ext}`;
     try {
       const picturesArray = [];
 
@@ -100,47 +98,6 @@ async function store(req, res) {
     }
   });
 }
-
-// async function store(req, res) {
-//   const form = formidable({
-//     multiples: true,
-//     uploadDir: __dirname + '/../public/img',
-//     keepExtensions: true,
-//   });
-
-//   form.parse(req, async (err, fields, files) => {
-//     const picturesArray = [];
-//     files.picture.newFilename
-//       ? picturesArray.push(files.picture.newFilename)
-//       : picturesArray.push(...files.picture.map((picture) => picture.newFilename));
-
-//     try {
-//       const product = new Product({
-//         name: fields.name,
-//         description: fields.description,
-//         picture: picturesArray,
-//         price: fields.price,
-//         stock: fields.stock,
-//         category: fields.category,
-//         featured: fields.featured,
-//         slug: slugify(fields.name, { lower: true, strict: true }),
-//       });
-//       await product.save();
-//       const category = await Category.findById(fields.category);
-//       category.products.push(product._id);
-//       await category.save();
-//       res.status(201).json({ msg: 'product successfully created' });
-//     } catch (error) {
-//       console.log('[ Product Controller -> Store ] Ops, something went wrong');
-//       for (const picture of files.picture) {
-//         fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-//           if (err) console.log(err);
-//         });
-//       }
-//       return res.status(400).json({ msg: error.message });
-//     }
-//   });
-// }
 
 async function update(req, res) {
   if (req.query.transaction === 'buy') {
