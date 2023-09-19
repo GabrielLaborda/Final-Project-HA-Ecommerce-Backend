@@ -3,6 +3,7 @@ const Product = require('../models/Product');
 const formidable = require('formidable');
 const fs = require('fs');
 const slugify = require('slugify');
+const supabase = require('./../supabaseConfig');
 
 async function index(req, res) {
   try {
