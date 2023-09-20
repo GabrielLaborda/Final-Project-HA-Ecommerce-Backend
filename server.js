@@ -14,8 +14,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
+  preflightContinue: true,
   optionsSuccessStatus: 204,
+  allowedHeaders: 'Content-Type,Authorization',
 };
 
 app.use(cors(corsOptions));
