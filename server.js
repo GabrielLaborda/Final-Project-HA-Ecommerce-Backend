@@ -11,12 +11,14 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
 
-app.use('*', cors(), function (req, res, next) {
-  // res.json({ msg: 'This is CORS-enabled for all origins!' })
-  next();
-});
+app.use(cors(corsOptions));
 
 app.use(express.json());
 routes(app);
