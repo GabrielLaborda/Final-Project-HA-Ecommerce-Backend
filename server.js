@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const corsOptions = {
-  origin: true,
+  origin: false,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: true,
   optionsSuccessStatus: 204,
