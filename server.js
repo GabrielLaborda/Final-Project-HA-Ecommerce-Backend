@@ -11,8 +11,11 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.options('*', cors()); // include before other routes
 app.use(cors());
+
+app.use('*', cors(), function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for all origins!' });
+});
 
 app.use(express.json());
 routes(app);
