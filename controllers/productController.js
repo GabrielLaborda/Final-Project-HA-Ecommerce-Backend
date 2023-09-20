@@ -87,7 +87,8 @@ async function store(req, res) {
       res.status(201).json({ msg: 'product successfully created' });
     } catch (error) {
       console.log('[ Product Controller -> Store ] Ops, something went wrong');
-      return res.status(400).json({ msg: error.message });
+      console.log(error);
+      return res.json({ msg: error });
     }
   });
 }
