@@ -14,7 +14,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('*', cors(), function (req, res, next) {
-  res.json({ msg: 'This is CORS-enabled for all origins!' });
+  // res.json({ msg: 'This is CORS-enabled for all origins!' })
+  next();
 });
 
 app.use(express.json());
