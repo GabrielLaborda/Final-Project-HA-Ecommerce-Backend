@@ -84,7 +84,6 @@ async function update(req, res) {
       {
         name: fields.name,
         description: fields.description,
-        products: fields.products,
         slug: slugify(fields.name, { lower: true, strict: true }),
       }
     );
