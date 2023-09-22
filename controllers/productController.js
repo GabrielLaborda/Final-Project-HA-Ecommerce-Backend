@@ -77,7 +77,7 @@ async function store(req, res) {
         price: fields.price,
         stock: fields.stock,
         category: fields.category,
-        featured: fields.featured,
+        featured: (fields.featured? fields.featured: false),
         slug: slugify(fields.name, { lower: true, strict: true }),
       });
       await product.save();
