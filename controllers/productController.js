@@ -116,12 +116,12 @@ async function update(req, res) {
       await Product.findOneAndUpdate(
         { slug: req.params.slug },
         {
-          name: fields.name,
-          description: fields.description,
-          price: fields.price,
-          stock: fields.stock,
-          featured: fields.featured,
-          slug: slugify(fields.name, { lower: true, strict: true }),
+          name: req.body.name,
+          description: req.body.description,
+          price: req.body.price,
+          stock: req.body.stock,
+          featured: req.body.featured,
+          slug: slugify(req.body.name, { lower: true, strict: true }),
         }
       );
       res.status(200).json({ msg: 'product successfully updated' });
