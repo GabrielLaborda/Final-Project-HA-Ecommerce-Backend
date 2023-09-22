@@ -82,9 +82,9 @@ async function update(req, res) {
     await Category.findOneAndUpdate(
       { slug: req.params.slug },
       {
-        name: fields.name,
-        description: fields.description,
-        slug: slugify(fields.name, { lower: true, strict: true }),
+        name: req.body.name,
+        description: req.body.description,
+        slug: slugify(req.body.name, { lower: true, strict: true }),
       }
     );
     return res.status(200).json({ msg: 'Category successfully updated' });
