@@ -56,6 +56,17 @@ async function update(req, res) {
       console.log("[ User Controller -> Update ] Ops, something went wrong");
       return res.status(404).json({ msg: err.message });
     }
+  } else if (req.query.transaction === "changePassword") {
+    try {
+      const passwordEncrypt = await bcrypt.hash(req.body.password, 10);
+      await User.findByIdAndUpdate(req.params.id, {
+        password: passwordEncrypt,
+      });
+      return res.status(200).json({ msg: "user orders successfully updated" });
+    } catch (error) {
+      console.log("[ User Controller -> Update ] Ops, something went wrong");
+      return res.status(404).json({ msg: err.message });
+    }
   } else {
     try {
       await User.findByIdAndUpdate(req.params.id, {
