@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 async function runAllSeeders() {
-  // Reiniciar la base de datos al correr de nuevo los seeders:
   const { mongoose } = require('../db');
   await mongoose.connection.dropDatabase();
 
@@ -17,9 +16,6 @@ async function runAllSeeders() {
   await require('./orderSeeders')();
 
   console.log('[Database] ¡Los datos de prueba fueron insertados!');
-  // process.exit();
 }
-
-// runAllSeeders();
 
 module.exports = runAllSeeders;
