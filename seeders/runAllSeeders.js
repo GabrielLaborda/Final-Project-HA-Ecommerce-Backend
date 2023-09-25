@@ -17,7 +17,9 @@ async function runAllSeeders() {
   await require('./orderSeeders')();
 
   console.log('[Database] ¡Los datos de prueba fueron insertados!');
-  process.exit();
+  // process.exit();
 }
 
-runAllSeeders();
+// runAllSeeders();
+
+module.exports = runAllSeeders;

@@ -5,6 +5,7 @@ const adminRoutes = require('./adminRoutes');
 const loginRoutes = require('./loginRoutes');
 const orderRoutes = require('./orderRoutes');
 const orderStatusRoutes = require('./orderStatusRoutes');
+const seederRoutes = require('./seederRoutes');
 
 module.exports = (app) => {
   app.use('/login', loginRoutes);
@@ -14,4 +15,5 @@ module.exports = (app) => {
   app.use('/users', userRoutes);
   app.use('/orders', orderRoutes);
   app.use('/orderstatus', orderStatusRoutes);
+  app.use('/seeders', seederRoutes);
 };
