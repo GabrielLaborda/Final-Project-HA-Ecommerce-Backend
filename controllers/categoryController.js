@@ -67,11 +67,6 @@ async function store(req, res) {
       return res.status(201).json({ msg: 'Category successfully created' });
     } catch (err) {
       console.log('[ Category Controller -> Store ] Ops, something went wrong');
-      for (const picture of files.pictures) {
-        fs.unlink(__dirname + '/../public/img/' + picture.newFilename, (err) => {
-          if (err) console.log(err);
-        });
-      }
       return res.status(400).json({ msg: err.message });
     }
   });
