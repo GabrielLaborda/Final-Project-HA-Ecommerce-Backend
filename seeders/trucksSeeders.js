@@ -113,7 +113,7 @@ async function trucksSeeders() {
       category: categoryId,
       featured: false,
     },
-    {
+    {10.0" GULLWING CHARGER BLACK WITH BLUE SINGLE TRUCK
       name: '9.0" GULLWING SIDEWINDER II RASTA SINGLE TRUCK',
       description: `Width: 9.0"
 
@@ -611,27 +611,6 @@ async function trucksSeeders() {
       featured: false,
     },
     {
-      name: '10.0" GULLWING CHARGER BLACK WITH BLUE SINGLE TRUCK',
-      description: `Width: 10.0"
-
-    Baseplate Angle: 50°
-    
-    Geometry: Reverse
-    
-    Construction: Cast
-    
-    Hole Pattern: 6-Hole
-    
-    Rake: No
-    
-    Bushing Shape & Duro: Cone/Cone (89a)`,
-      picture: ['10-Charger-Black-with-Blue_2048x.webp'],
-      price: 29.95,
-      stock: 55,
-      category: categoryId,
-      featured: false,
-    },
-    {
       name: '10.0" GULLWING ALPINE RAW (SILVER) SINGLE TRUCK',
       description: `Width: 10.0"
 
@@ -704,27 +683,6 @@ async function trucksSeeders() {
       ],
       price: 76.0,
       stock: 100,
-      category: categoryId,
-      featured: false,
-    },
-    {
-      name: '9.0" GULLWING CHARGER BLUE/BLACK/BLUE SINGLE TRUCK',
-      description: `Width: 9.0"
-
-    Baseplate Angle: 50
-    
-    Geometry: Reverse
-    
-    Construction: Cast
-    
-    Hole Pattern: 6-Hole
-    
-    Rake: No
-    
-    Bushing Shape & Duro: Cone/Chubbie (89a)`,
-      picture: ['10-Charger-Black-with-Blue_48b466de-74f0-492d-84d4-105bd4e1787f_2048x.webp'],
-      price: 25.95,
-      stock: 60,
       category: categoryId,
       featured: false,
     },
