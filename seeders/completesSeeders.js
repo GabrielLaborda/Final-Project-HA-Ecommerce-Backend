@@ -49,7 +49,7 @@ async function completesSeeders() {
       price: 198.95,
       stock: 89,
       category: categoryId,
-      featured: true,
+      featured: false,
     },
     {
       name: 'LEDGER FIESTA',
@@ -139,7 +139,7 @@ async function completesSeeders() {
       price: 184.95,
       stock: 54,
       category: categoryId,
-      featured: true,
+      featured: false,
     },
     {
       name: 'WAVEPARK CYCLES',
@@ -225,7 +225,7 @@ async function completesSeeders() {
       price: 158.95,
       stock: 74,
       category: categoryId,
-      featured: true,
+      featured: false,
     },
     {
       name: 'JIMMY RIHA PRO DIVER',
@@ -263,7 +263,7 @@ async function completesSeeders() {
       price: 178.95,
       stock: 77,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'CASCADE NINETY FIVE',
@@ -303,7 +303,7 @@ async function completesSeeders() {
       price: 174.95,
       stock: 51,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'BOSS ROSS PRO BLAZE',
@@ -341,7 +341,7 @@ async function completesSeeders() {
       price: 148.95,
       stock: 99,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'JAMMER RIPS',
@@ -390,7 +390,7 @@ async function completesSeeders() {
       price: 159.95,
       stock: 97,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'SNAPPER HIDEOUT',
@@ -516,7 +516,7 @@ async function completesSeeders() {
       price: 138.95,
       stock: 68,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'BAMBINO BIVY',
@@ -566,7 +566,7 @@ async function completesSeeders() {
       price: 154.95,
       stock: 53,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'HOPPER HOOPLA',
@@ -653,7 +653,7 @@ async function completesSeeders() {
       price: 148.95,
       stock: 59,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'SPLASH SNAPBACKK',
@@ -729,7 +729,7 @@ async function completesSeeders() {
       price: 184.95,
       stock: 32,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'GRAVY SEMI-PRO BARGE',
@@ -772,7 +772,7 @@ async function completesSeeders() {
       price: 168.95,
       stock: 92,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'MASON PRO DANGER',
@@ -816,7 +816,7 @@ async function completesSeeders() {
       price: 162.95,
       stock: 91,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'BAMBINO SKIPPER',
@@ -889,7 +889,7 @@ async function completesSeeders() {
       price: 148.95,
       stock: 56,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'UNAGI RIPS',
@@ -941,7 +941,7 @@ async function completesSeeders() {
       price: 208.95,
       stock: 71,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
     {
       name: 'ROUNDHOUSE ROLL',
@@ -983,7 +983,7 @@ async function completesSeeders() {
       price: 219.95,
       stock: 88,
       category: categoryId,
-      featured: false,
+      featured: true,
     },
   ];
 
