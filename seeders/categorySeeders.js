@@ -11,7 +11,7 @@ async function categorySeeders() {
     },
     {
       name: 'Decks',
-      pictures: ['cover-2.png'],
+      pictures: ['cover-2b.png'],
       description:
         'At some point in time we have all had it, that overwhelming urge to SMASH IT, whatever ´IT´ may be. The feeling comes from deep within, and it is aggressively raw. At Sector 9, we are embracing the feeling of flying down a hill, hitting the pool coping or slashing a driveway bank, and incorporating that feeling into our daily mantra. We aren not going to stop there either. SMASH IT is also about bringing awareness to things beyond just skateboarding, like the fight against cancer, environmental responsibility and community engagement. We believe that SMASH IT is just as much about helping those around you, as it is bettering yourself. It is time to get motivated. It is time to SMASH IT!',
       slug: 'decks',
