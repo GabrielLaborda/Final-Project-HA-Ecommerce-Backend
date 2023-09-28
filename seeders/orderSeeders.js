@@ -18,12 +18,12 @@ async function orderSeeders() {
       products: [
         {
           name: productOne.name,
-          quantity: Math.floor(Math.random() * 10),
+          quantity: Math.floor(Math.random() * 10) + 1,
           price: productOne.price,
         },
         {
           name: productTwo.name,
-          quantity: Math.floor(Math.random() * 10),
+          quantity: Math.floor(Math.random() * 10) + 1,
           price: productTwo.price,
         },
       ],
